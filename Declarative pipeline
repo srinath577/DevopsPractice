@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+stage('scm') {
+steps {
+    git 'https://github.com/ganeshlovesdevops/maven_demo.git'
+    }
+}
+    stage('build') {
+    steps {
+        withMaven(maven : 'mymaven'){
+        bat "mvn clean install"
+    }
+    }
+}
+}
+}
+}
